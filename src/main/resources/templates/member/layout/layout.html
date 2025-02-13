@@ -1,0 +1,54 @@
+<html layout:decorate="~{common/layout.html}" >
+
+<head>
+
+</head>
+
+<body>
+
+<header class="sticky top-0 z-50" layout:fragment="header">
+
+    <div class="navbar bg-inherit border-solid border-2 rounded-lg border-slate-800 my-3">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                    <li>
+                        <a th:href="@{/}">메인</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="navbar-center">
+            <a th:href="@{/}" class="btn btn-ghost text-xl">SynerGarette</a>
+        </div>
+
+        <div class="navbar-end" >
+            <div class="hidden lg:flex" th:if="${@rq.isAdmin}">
+                <a th:href="@{/adm/goods/createGoods}" class="btn border-solid border-2 rounded-lg border-slate-800 mr-3" th:if="${@rq.isAdmin}">상품 등록</a>
+
+                <a th:href="@{/adm/links/registration}" class="btn border-solid border-2 rounded-lg border-slate-800" th:if="${@rq.isAdmin}">링크 등록</a>
+            </div>
+
+            <div class="dropdown dropdown-end" th:if="${@rq.isAdmin}">
+
+                <div tabindex="0" role="button" class="btn btn-ghost btn-circle lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
+                </div>
+                <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-40">
+                    <li>
+                        <a th:href="@{/adm/goods/createGoods}" th:if="${@rq.isAdmin}">상품 등록</a>
+                    </li>
+
+                    <li>
+                        <a th:href="@{/adm/links/registration}" th:if="${@rq.isAdmin}">링크 등록</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+</body>
+</html>
